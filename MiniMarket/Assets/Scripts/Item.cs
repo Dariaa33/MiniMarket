@@ -26,10 +26,14 @@ public class Item : MonoBehaviour
     [SerializeField]
     GameObject MenuCrear;
     bool MovingCreated;
+
+    [SerializeField]
+    GameObject circuloCreacion;
   
     void Start()
     {
         MovingCreated = false;
+        //circuloCreacion.SetActive(false);
     }
 
     void Update()
@@ -39,20 +43,23 @@ public class Item : MonoBehaviour
         {
 
             objectcr.SetActive(false);
-           
+            circuloCreacion.SetActive(true);
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                objectcr.transform.position = hit.point;
-
+                objectcr.transform.position = hit.point; 
             }
             objectcr.SetActive(true);
             objectcr.transform.Rotate(Input.mouseScrollDelta * 16);
-            if (Input.GetMouseButtonDown(1))
+
+
+            if (Input.GetMouseButtonDown(1)) // para colocar objeto botón derecho
             {
 
                 MovingCreated = false;
+                circuloCreacion.SetActive(false);
             }
         }
 
@@ -60,11 +67,17 @@ public class Item : MonoBehaviour
        
     }
 
+    /*public void SetParent(GameObject newParent)
+    {
+        objectcr = newParent;
+       
+    }*/
+
     public void MenuTienda()
     {
         MenuCrear.SetActive(true);
     }
-    public void SpawnItem()
+    public void SpawnItem() // función para crear objetos
     {
         objectcr = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
         MenuCrear.SetActive(false);

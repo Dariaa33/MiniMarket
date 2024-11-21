@@ -14,7 +14,9 @@ public class EliminatObjetos : MonoBehaviour
     [SerializeField]
     GameObject buttonRotate;
     bool isMoving;
-    
+    [SerializeField]
+    GameObject buttonScale;
+
     void Start()
     {
         isMoving = false;
@@ -23,7 +25,7 @@ public class EliminatObjetos : MonoBehaviour
     
     void Update()
     {
-       // для срабатывания выбора объекта
+       // para seleccionar los objetos
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -67,14 +69,14 @@ public class EliminatObjetos : MonoBehaviour
             RaycastHit hit; 
 
 
-            if (Physics.Raycast(ray, out hit, raycastDistance) && hit.collider.GetComponent<Item>())
+            if (Physics.Raycast(ray, out hit, raycastDistance) && hit.collider.GetComponent<Item>()) //para que afecta solo a los objetos que tiene este script
             {
 
                 selectedObject = hit.collider.gameObject;
 
-                // выводит в консоль выбранный объект
-                Debug.Log("Seleccionaste el objeto: " + selectedObject.name);
-
+                // pone en console que he seleccionado
+                //Debug.Log("Seleccionaste el objeto: " + selectedObject.name);
+                
                 selectedObject.GetComponent<Renderer>();
 
             }
@@ -97,6 +99,7 @@ public class EliminatObjetos : MonoBehaviour
         {
 
             selectedObject.transform.Rotate(0f, 11f, 0f);
+           
 
 
         }
@@ -108,10 +111,22 @@ public class EliminatObjetos : MonoBehaviour
         if(isMoving == true)
         {
             isMoving = false;
+            
         }
         if (isMoving == false)
         {
             isMoving = true;
+        }
+    }
+
+    public void Escalar()
+    {
+        if(buttonScale.activeSelf)
+        {
+            /*if()
+            {
+
+            }*/
         }
     }
 }

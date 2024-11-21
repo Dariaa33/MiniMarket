@@ -9,11 +9,12 @@ public class PopUp : MonoBehaviour
     GameObject popup;
     [SerializeField]
     float timeAnim;
+
     void Start()
     {
         {
             popup.SetActive(false);
-            
+           
         }
     }
 
@@ -38,13 +39,13 @@ public class PopUp : MonoBehaviour
     {
 
         popup.SetActive(true);
-        LeanTween.moveLocalY(popup, -423f, 1f);
-        LeanTween.moveLocalY(popup, -423f, timeAnim).setEase(LeanTweenType.animationCurve);
+        LeanTween.moveLocalY(popup, -347f, 1f);
+        LeanTween.moveLocalY(popup, -347f, timeAnim).setEase(LeanTweenType.animationCurve);
     }
 
     public void HidePopUp()
     {
-        LeanTween.moveLocalY(popup, -644f, timeAnim).setEase(LeanTweenType.animationCurve).setOnComplete(() =>
+        LeanTween.moveLocalY(popup, -561f, timeAnim).setEase(LeanTweenType.animationCurve).setOnComplete(() =>
         {
             popup.SetActive(false);
 
@@ -53,4 +54,6 @@ public class PopUp : MonoBehaviour
 
 
     }
+
+    
 }
